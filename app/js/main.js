@@ -12,10 +12,10 @@ let customSelect = function () {
         openedSelect = this;
 
         if (prevSelect && prevSelect != openedSelect) {
-            prevSelect.classList.remove("opened");
+            prevSelect.classList.remove("form-select--opened");
         }
 
-        this.classList.toggle("opened");
+        this.classList.toggle("form-select--opened");
 
         setInitScroll();
 
@@ -33,7 +33,7 @@ let customSelect = function () {
     });
 
     function selectClose () {
-        openedSelect.classList.remove("opened");
+        openedSelect.classList.remove("form-select--opened");
 
         setInitScroll();
     }
@@ -78,14 +78,14 @@ let swipeSlider = function () {
         };
     });
 
-    dots[1].classList.add("current");
+    dots[1].classList.add("specialties__slider-dot--current");
 
     dots.forEach((item, index) => {
         item.addEventListener("click", () => {
             dotsControl(index);
         });
 
-        if (item.classList.contains("current")) {
+        if (item.classList.contains("specialties__slider-dot--current")) {
             currentIndex = index;
         }
     });
@@ -120,8 +120,8 @@ let swipeSlider = function () {
     }
 
     function moveSlides (needEffects = true) {
-        dots[prevIndex].classList.remove("current");
-        dots[currentIndex].classList.add("current");
+        dots[prevIndex].classList.remove("specialties__slider-dot--current");
+        dots[currentIndex].classList.add("specialties__slider-dot--current");
 
         slides.forEach(item => {
             item.style.transform = `translateX(-${currentIndex * (rect.width + marginLeft)}px`;
@@ -188,3 +188,39 @@ let swipeSlider = function () {
 }
 
 swipeSlider();
+
+let sortByCategory = function () {
+    const categoryBtns = document.querySelectorAll(".meals__categories-button");
+    const categoryItems = document.querySelectorAll(".meals__list");
+    let prevActive;
+
+    categoryBtns[0].classList.add("meals__categories-button--active");
+
+    categoryBtns.forEach((item, index) => {
+        item.addEventListener("click", filterItems);
+
+        if (item.classList.contains("meals__categories-button--active")) {
+            prevActive = item;
+            categoryItems[index].classList.add("meals__list--match");
+
+            filterItems.call(prevActive);
+        }
+    });
+
+    function filterItems () {
+        prevActive.classList.remove("meals__categories-button--active");
+        this.classList.add("meals__categories-button--active");
+
+        categoryItems.forEach(item => {
+            if (item.classList.contains(this.getAttribute("data-filter"))) {
+                item.classList.add("meals__list--match");
+            } else {
+                item.classList.remove("meals__list--match");
+            }
+        });
+
+        prevActive = this;
+    }
+}
+
+sortByCategory();
