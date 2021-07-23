@@ -1,1 +1,50 @@
+@import "reset.scss";
+@import "fonts.scss";
+@import "vars.scss";
+@import "global.scss";
 
+.header {
+    position: absolute;
+    width: 100%;
+    z-index: 99;
+    user-select: none;
+    background-color: #000;
+    &__inner {
+        height: 100px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+}
+
+.menu {
+    padding-left: 48px;
+    padding-right: 38px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid rgba(#fff, 0.2);
+    flex: 1 1 0;
+    &__list {
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+    }
+    &__list-link {
+        text-transform: uppercase;
+        color: #fff;
+        font-size: 12px;
+        font-weight: 700;
+        position: relative;
+    }
+}
+
+.logo {
+    transform: translateY(50px) rotate(90deg);
+    padding: 0 35px;
+    &__img {
+        width: 150px;
+    }
+}
+
+@import "media.scss";
