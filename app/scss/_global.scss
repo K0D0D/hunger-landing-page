@@ -50,3 +50,124 @@ body {
 	cursor: pointer;
 	border-radius: 5px;
 }
+
+.flexible {
+	display: flex;
+	justify-content: space-between;
+	min-width: 100%;
+}
+
+.text-content,
+.image-content {
+	flex: 1 1 0;
+	display: flex;
+}
+
+.text-content {
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	padding-right: 40px;
+}
+
+.title {
+	font-family: "Banny Bold";
+	font-size: 36px;
+	line-height: 48px;
+	padding-bottom: 10px;
+	text-transform: uppercase;
+	position: relative;
+	&:after {
+		content: "";
+		position: absolute;
+		bottom: 0;
+		left: 50%;
+		transform: translateX(-50%);
+		width: 60px;
+		height: 5px;
+		background-color: $yellow;
+		border-radius: 5px;
+	}
+}
+
+.after-title {
+	margin-top: 20px;
+	font-size: 18px;
+	line-height: 28px;
+	font-weight: 700;
+	max-width: 600px;
+}
+
+.text {
+	margin-top: 20px;
+	max-width: 600px;
+}
+
+.image-content {
+	position: relative;
+    justify-content: flex-start;
+	padding-left: 40px;
+	&:after {
+		content: "";
+		position: absolute;
+		right: 0;
+		top: 50%;
+		transform: translateY(-50%);
+		width: 250px;
+		height: 250px;
+		border: 20px solid $yellow;
+		z-index: 2;
+		border-radius: 5px;
+		box-shadow: 0px 0px 100px rgba(0, 0, 0, 0.3), 
+					inset 0px 0px 30px rgba(0, 0, 0, 0.3);
+	}
+	img {
+		border-radius: 5px;
+		box-shadow: 0px 0px 50px rgba(0, 0, 0, 0.5);
+		z-index: 1;
+	}
+}
+
+.has-caption {
+    padding-top: 45px;
+	padding-bottom: 100px;
+	color: #fff;
+	background-size: cover;
+    background-position: center center;
+    .flexible {
+        padding-top: 40px;
+    }
+    .text-content {
+		padding-right: 0;
+		padding-left: 40px;
+	}
+	.image-content {
+		justify-content: flex-end;
+		padding-left: 0;
+		padding-right: 40px;
+	}
+	.image-content:after {
+		content: "";
+		position: absolute;
+		left: 0;
+		top: 50%;
+		transform: translateY(-50%);
+		width: 250px;
+		height: 250px;
+		border: 20px solid $yellow;
+		z-index: 2;
+		border-radius: 5px;
+		box-shadow: 0px 0px 100px rgba(0, 0, 0, 0.3), 
+					inset 0px 0px 30px rgba(0, 0, 0, 0.3);
+	}
+	.after-title,
+	.text {
+		color: rgba(#fff, 0.9);
+	}
+}
+
+.no-caption {
+	padding-top: 100px;
+	padding-bottom: 100px;
+}
