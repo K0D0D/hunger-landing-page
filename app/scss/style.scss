@@ -195,4 +195,98 @@
     }
 }
 
+.team {
+    background-image: url("../images/team-bg.jpg");
+}
+
+.book {
+    padding-bottom: 45px;
+    &__inner {
+        padding-bottom: 40px;
+    }
+    &__form {
+        margin-top: 20px;
+        display: grid;
+        grid-template-columns: repeat(2, minmax(200px, 275px));
+        grid-gap: 10px;
+    }
+    .form-select {
+        position: relative;
+        border-radius: 5px;
+    }
+    .form-select:after {
+        content: "";
+        background-image: url("../images/arrow-down.svg");
+        width: 13px;
+        height: 9px;
+        position: absolute;
+        right: 20px;
+        top: 50%;
+        transform: translateY(-50%);
+        transition: 0.3s;
+        pointer-events: none;
+        transform-origin: center center;
+    }
+    .form-select__value {
+        background-color: $grey;
+	    width: 100%;
+	    padding: 20px;
+	    line-height: 20px;
+	    border-radius: 5px;
+        color: rgba(51, 51, 51, 0.5);
+        text-align: left;
+        user-select: none;
+        cursor: pointer;
+    }
+    .form-select__options {
+        position: absolute;
+        z-index: 3;
+        width: 100%;
+        border-radius: 0 5px;
+        max-height: 183px;
+        overflow-y: scroll;
+        display: none;
+        border-radius: 0 0 5px 5px;
+        scrollbar-color: $yellow $grey;
+        scrollbar-width: thin;
+        &::-webkit-scrollbar {
+            width: 6px;
+            background-color: $grey;
+            border-radius: 0 0 5px 0;
+        }
+        &::-webkit-scrollbar-thumb {
+            background-color: $yellow;
+            border-radius: 5px;
+        }
+    }
+    .form-select.opened .form-select__options {
+        display: block;
+    }
+    .form-select.opened:after {
+        transform: translateY(-50%) rotate(180deg);
+    }
+    .form-select__option {
+        background-color: $grey;
+        padding: 20px;
+        width: 100%;
+        border-top: 1px solid rgba($dark-grey, 0.1);
+        border-radius: 0;
+        text-align: left;
+        cursor: pointer;
+        box-sizing: border-box;
+        color:rgba(51, 51, 51, 0.9);
+    }
+    &__form-btn {
+        grid-column: span 2;
+    }
+    &__hours {
+        color: rgba($dark-grey, 0.5);
+        text-align: center;
+        white-space: nowrap;
+        b {
+            font-weight: 700;
+        }
+    }
+}
+
 @import "media.scss";
