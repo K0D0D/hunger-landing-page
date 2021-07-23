@@ -8,7 +8,6 @@
     width: 100%;
     z-index: 99;
     user-select: none;
-    background-color: #000;
     &__inner {
         height: 100px;
         display: flex;
@@ -44,6 +43,155 @@
     padding: 0 35px;
     &__img {
         width: 150px;
+    }
+}
+
+.top {
+    width: 100%;
+    height: 100vh;
+    min-height: 600px;
+    max-height: 1080px;
+    overflow-y: hidden;
+    background: url("../images/top-bg.jpg");
+    background-size: cover;
+    background-position: center center;
+    color: #fff;
+    font-weight: 700;
+    display: flex;
+    padding-top: 100px;
+    &__inner {
+        height: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    &__hours {
+        width: 60px;
+        height: 1px;
+        position: relative;
+    }
+    &__hours-text {
+        position: absolute;
+        font-size: 12px;
+        width: max-content;
+        transform-origin: bottom left;
+        transform: rotateZ(90deg) rotateX(180deg) rotateY(180deg) translateX(-100px) translateY(24px);
+    }
+    &__banner {
+        height: 100%;
+        overflow-y: hidden;
+        padding-top: 10%;
+        padding-left: 38px;
+        padding-right: 38px;
+        padding-bottom: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        border-left: 1px solid rgba(#fff, 0.2);
+        border-right: 1px solid rgba(#fff, 0.2);
+    }
+    &__banner-caption {
+        margin-bottom: 15px;
+    }
+    &__banner-title {
+        font-family: "Banny Bold";
+        text-transform: uppercase;
+        padding-bottom: 10px;
+        font-size: 96px;
+        line-height: 106px;
+        position: relative;
+    }
+    &__banner-title:after {
+        content: "";
+        position: absolute;
+        width: 60px;
+        height: 5px;
+        background-color: $yellow;
+        border-radius: 50px;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    &__banner-buttons {
+        margin-top: 30px;
+        display: flex;
+        user-select: none;
+    }
+    &__banner-button {
+        width: 200px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    &__banner-button:last-child {
+        background-color: transparent;
+        margin-left: 40px;
+        border: 1px solid rgba(#fff, 0.5);
+    }
+    .next {
+        border-radius: 50%;
+        margin-top: 80px;
+        height: 60px;
+        width: 60px;
+        border: 1px solid rgba(#fff, 0.2);
+        position: relative;
+    }
+    .next img {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translateX(-50%) translateY(-50%);
+        z-index: 1;
+        user-select: none;
+    }
+    .ellipse {
+        width: 40px;
+        height: 40px;
+        background-color: #fff;
+        border-radius: 50%;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translateX(-50%) translateY(-50%);
+    }
+    .next:before {
+        content: "";
+        position: absolute;
+        bottom: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 1px;
+        height: 53vh;
+        background-color: rgba(#fff, 0.2);
+        pointer-events: none;
+        z-index: 0;
+    }
+    .next:after {
+        content: "";
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 1px;
+        height: 100vh;
+        background-color: rgba(#fff, 0.2);
+        pointer-events: none;
+        z-index: 0;
+    }
+    &__social-item {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 60px;
+        height: 60px;
+        border: 1px solid rgba(#fff, 0.2);
+        border-radius: 50%;
+        z-index: 3;
+        user-select: none;
+    }
+    &__social-item:not(:first-child) {
+        margin-top: 20px;
     }
 }
 
