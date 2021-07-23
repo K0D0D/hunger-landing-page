@@ -31,3 +31,22 @@ body {
 .footer {
 	flex: 0 0 auto;
 }
+
+.caption {
+    text-align: center;
+	letter-spacing: 7px;
+    font-size: 12px;
+    line-height: 14px;
+    text-transform: uppercase;
+}
+
+.btn {
+    background-color: $yellow;
+	color: #fff;
+	font-size: 12px;
+	text-transform: uppercase;
+	font-weight: 700;
+	height: 60px;
+	cursor: pointer;
+	border-radius: 5px;
+}
