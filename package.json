@@ -17,5 +17,8 @@
     "gulp-imagemin": "^7.1.0",
     "gulp-sass": "^4.1.0",
     "gulp-uglify-es": "^2.0.0"
+  },
+  "dependencies": {
+    "focus-visible": "^5.2.0"
   }
 }
