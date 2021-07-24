@@ -224,3 +224,71 @@ let sortByCategory = function () {
 }
 
 sortByCategory();
+
+let stickyHeader = function () {
+    const header = document.querySelector(".header");
+    let turnOnArea = 160;//расстояние, на которой хэдэр будет получать _fixed
+    let turnOffArea = 20;//растояние возврата в исходное состояние
+    let prevScroll;
+    let currentScroll;
+
+    window.addEventListener("scroll", checkScroll);
+
+    function checkScroll () {
+        currentScroll = window.pageYOffset;
+
+        positionToggle();
+        
+        if (!header.classList.contains("header--fixed")) return;
+
+        if (currentScroll > prevScroll) {
+            header.classList.add("header--hidden");
+        } else {
+            header.classList.remove("header--hidden");
+        }
+
+        prevScroll = currentScroll;
+    }
+
+    function positionToggle () {
+        if (currentScroll <= turnOffArea) {
+            header.classList.remove("header--fixed", "header--hidden");
+            header.style = "";
+        } else if (
+            !header.classList.contains("header--fixed") &&
+            currentScroll > turnOnArea
+        ) {
+            header.classList.add("header--fixed", "header--hidden");
+            header.style = "opacity: 0";
+
+            setTimeout(() => {
+                header.style = "";    
+            }, 400);
+        }
+    }
+}
+
+stickyHeader();
+
+let smoothAnchorScroll = function () {
+    let anchorLinks = document.querySelectorAll("a[href^='#'");
+
+    anchorLinks.forEach(item => {
+        item.addEventListener("click", function (event) {
+            event.preventDefault();
+
+            scrollToBlock.call(this);
+        });
+    });
+
+    function scrollToBlock () {
+        let elem = document.querySelector(this.getAttribute("href"));
+
+        window.scrollTo({
+            top: elem.offsetTop,
+            behavior: "smooth"
+        });
+    }
+}
+
+smoothAnchorScroll();
