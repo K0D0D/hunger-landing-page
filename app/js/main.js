@@ -227,12 +227,14 @@ sortByCategory();
 
 let stickyHeader = function () {
     const header = document.querySelector(".header");
-    let turnOnArea = 160;//расстояние, на которой хэдэр будет получать _fixed
-    let turnOffArea = 20;//растояние возврата в исходное состояние
+    let turnOnArea = 160;
+    let turnOffArea = 20;
     let prevScroll;
     let currentScroll;
 
     window.addEventListener("scroll", checkScroll);
+
+    window.addEventListener("resize", changeAreas);
 
     function checkScroll () {
         currentScroll = window.pageYOffset;
@@ -248,6 +250,13 @@ let stickyHeader = function () {
         }
 
         prevScroll = currentScroll;
+    }
+
+    function changeAreas () {
+        if (window.innerWidth < 1101) {
+            turnOnArea = header.offsetHeight;
+            turnOffArea = 0;
+        }
     }
 
     function positionToggle () {
@@ -274,6 +283,8 @@ let smoothAnchorScroll = function () {
     let anchorLinks = document.querySelectorAll("a[href^='#'");
 
     anchorLinks.forEach(item => {
+        if (item.getAttribute("href").length < 2) return;
+
         item.addEventListener("click", function (event) {
             event.preventDefault();
 
@@ -292,3 +303,25 @@ let smoothAnchorScroll = function () {
 }
 
 smoothAnchorScroll();
+
+let menu = function () {
+    const menuOpenBtn = document.querySelector(".open-btn");
+    const menuCloseBtn = document.querySelector(".close-btn");
+    const menuBlock = document.querySelector(".side-menu");
+    const menuLinks = menuBlock.querySelectorAll(".menu__list-link");
+
+    menuOpenBtn.addEventListener("click", menuToggle);
+    menuCloseBtn.addEventListener("click", menuToggle);
+    frame.addEventListener("click", menuToggle);
+
+    menuLinks.forEach(item => {
+        item.addEventListener("click", menuToggle);
+    });
+
+    function menuToggle () {
+        menuBlock.classList.toggle("side-menu--visible");
+        document.body.classList.toggle("no-scroll");
+    }
+}
+
+menu();
