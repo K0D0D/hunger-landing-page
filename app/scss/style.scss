@@ -86,6 +86,11 @@ body.no-scroll {
         background-color: $yellow;
         transition: 0.5s;
     }
+    &__list-link.focus-visible {
+        color: $yellow;
+        outline: 1px solid $yellow;
+        outline-offset: 5px;
+    }
 }
 
 .logo {
@@ -108,6 +113,13 @@ body.no-scroll {
     display: none;
     flex-direction: column;
     justify-content: space-between;
+    transition: background-color 0.3s;
+    &:active {
+        background-color: rgba(#fff, 0.2);
+    }
+    &.focus-visible {
+        box-shadow: 0 0 0 4px #fff;
+    }
     .bar {
         width: 100%;
         height: 3px;
@@ -169,6 +181,9 @@ body.no-scroll {
     background-position: center center;
     &:active {
         background-color: darken($yellow, 5%);
+    }
+    &.focus-visible {
+        box-shadow: 0 0 0 2px #fff;
     }
 }
 
@@ -316,7 +331,7 @@ body.no-scroll {
         border-radius: 50%;
         z-index: 3;
         user-select: none;
-        transition: 0.3s;
+        transition: 0.3s, box-shadow 0s;
     }
     &__social-item:not(:first-child) {
         margin-top: 20px;
@@ -337,6 +352,11 @@ body.no-scroll {
         opacity: 0;
         transition: 0.3s;
         z-index: -1;
+    }
+    &__banner-button.focus-visible,
+    .next.focus-visible,
+    &__social-item.focus-visible {
+        box-shadow: 0 0 0 4px #fff;
     }
 }
 
@@ -371,6 +391,9 @@ body.no-scroll {
         transition: 0.3s;
         pointer-events: none;
         transform-origin: center center;
+    }
+    .form-select.focus-visible {
+        box-shadow: 0 0 0 4px $yellow;
     }
     .form-select__value {
         background-color: $grey;
@@ -422,6 +445,9 @@ body.no-scroll {
         color:rgba(51, 51, 51, 0.9);
         transition: 0.3s;
     }
+    .form-select__option.focus-visible {
+        background-color: darken($grey, 7%);
+    }
     &__form-btn {
         grid-column: span 2;
     }
@@ -431,6 +457,9 @@ body.no-scroll {
         white-space: nowrap;
         b {
             font-weight: 700;
+        }
+        a.focus-visible {
+            outline: 2px solid $yellow;
         }
     }
 }
@@ -469,6 +498,9 @@ body.no-scroll {
         height: 10px;
         background-color: rgba(#fff, 0.5);
     }
+    &__slider-dot.focus-visible {
+        box-shadow: 0 0 0 3px #fff;
+    }
     &__slider-dot:not(:last-child) {
         margin-right: 20px;
     }
@@ -502,6 +534,9 @@ body.no-scroll {
         background-color: transparent;
         color: $dark-grey;
         transition: color 0.3s, background-color 0.3s;
+    }
+    &__categories-button.focus-visible {
+        outline: 4px solid $yellow;
     }
     &__categories-button--active {
         color: $yellow;
@@ -596,6 +631,9 @@ body.no-scroll {
         b {
             font-weight: 700;
         }
+        a.focus-visible {
+            outline: 2px solid $yellow;
+        }
     }
     &__image-container:last-child {
         justify-content: flex-start;
@@ -677,6 +715,10 @@ body.no-scroll {
             transform: translateY(-50%);
         }
     }
+    &__form-email a.focus-visible,
+    &__form-phone a.focus-visible {
+        outline: 2px solid $yellow;
+    }
     &__form-address:before {
         background-image: url("../images/point.svg");
         width: 11px;
@@ -708,6 +750,9 @@ body.no-scroll {
     }
     a {
         font-weight: 700;
+    }
+    a.focus-visible {
+        outline: 1px solid #fff;
     }
     span {
         font-weight: 400;
