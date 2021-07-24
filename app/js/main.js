@@ -3,9 +3,48 @@ let customSelect = function () {
     let openedSelect;
     let prevSelect;
     const selectOptions = document.querySelectorAll(".form-select__option");
+    const firstOptions = [];
+    const lastOptions = [];
+
+    document.querySelectorAll(".form-select__options").forEach(item => {
+        firstOptions.push(item.firstElementChild);
+        lastOptions.push(item.lastElementChild);
+    });
+
+    lastOptions.forEach((item, index) => {
+        item.addEventListener("keydown", (event) => {
+            if (!event.shiftKey && event.code === "Tab") {
+                event.preventDefault();
+
+                firstOptions[index].focus();
+            }
+        });
+    });
 
     selectContainers.forEach(item => {
         item.addEventListener("click", selectToggle);
+
+        item.addEventListener("keyup", (event) => {
+            switch (event.code) {
+                case "Enter":
+                    selectToggle.call(item);
+                    break;
+                case "Escape":
+                    item.classList.remove("form-select--opened");
+                    break;
+            }
+        });
+
+        item.addEventListener("keydown", (event) => {
+            if (
+                openedSelect &&
+                event.shiftKey && 
+                event.code === "Tab" &&
+                !item.querySelector(".form-select__options").contains(document.activeElement)
+            ) {
+                selectClose();
+            }
+        });
     });
 
     function selectToggle () {
@@ -26,7 +65,7 @@ let customSelect = function () {
         if (
             openedSelect &&
             !openedSelect.contains(event.target) &&
-            event.target.className != "book__form-option"
+            event.target.className != "form-select__option"
         ) {
             selectClose();
         }    
@@ -44,6 +83,18 @@ let customSelect = function () {
 
     selectOptions.forEach(item => {
         item.addEventListener("click", selectChoose);
+
+        item.addEventListener("keyup", (event) => {
+            if (event.code === "Enter") {
+                selectChoose.call(item);
+
+                if (openedSelect.previousElementSibling.value === "") {
+                    openedSelect.previousElementSibling.focus();
+                } else {
+                    openedSelect.nextElementSibling.focus();
+                }
+            }
+        });
     });
 
     function selectChoose () {
@@ -83,6 +134,12 @@ let swipeSlider = function () {
     dots.forEach((item, index) => {
         item.addEventListener("click", () => {
             dotsControl(index);
+        });
+
+        item.addEventListener("keyup", (event) => {
+            if (event.code === "Enter") {
+                dotsControl(index);
+            }
         });
 
         if (item.classList.contains("specialties__slider-dot--current")) {
@@ -231,6 +288,22 @@ let stickyHeader = function () {
     let turnOffArea = 20;
     let prevScroll;
     let currentScroll;
+    let tabNavigate;
+    let timer;
+
+    document.addEventListener("keydown", (event) => {
+        if (event.code === "Tab") {
+            tabNavigate = true;
+            
+            positionToggle();
+
+            clearTimeout(timer);
+
+            timer = setTimeout(() => {
+                tabNavigate = false;
+            }, 100);
+        }
+    });
 
     window.addEventListener("scroll", checkScroll);
 
@@ -259,8 +332,10 @@ let stickyHeader = function () {
         }
     }
 
+    changeAreas();
+
     function positionToggle () {
-        if (currentScroll <= turnOffArea) {
+        if (currentScroll <= turnOffArea || tabNavigate) {
             header.classList.remove("header--fixed", "header--hidden");
             header.style = "";
         } else if (
@@ -309,6 +384,7 @@ let menu = function () {
     const menuCloseBtn = document.querySelector(".close-btn");
     const menuBlock = document.querySelector(".side-menu");
     const menuLinks = menuBlock.querySelectorAll(".menu__list-link");
+    let lastLink = menuLinks[menuLinks.length - 1];
 
     menuOpenBtn.addEventListener("click", menuToggle);
     menuCloseBtn.addEventListener("click", menuToggle);
@@ -321,7 +397,29 @@ let menu = function () {
     function menuToggle () {
         menuBlock.classList.toggle("side-menu--visible");
         document.body.classList.toggle("no-scroll");
+
+        if (menuBlock.classList.contains("side-menu--visible")) {
+            menuCloseBtn.focus();
+        } else {
+            menuOpenBtn.focus();
+        }
     }
+
+    menuCloseBtn.addEventListener("keydown", (event) => {
+        if (event.shiftKey && event.code === "Tab") {
+            event.preventDefault();
+
+            lastLink.focus();
+        }
+    });
+
+    lastLink.addEventListener("keydown", (event) => {
+        if (!event.shiftKey && event.code === "Tab") {
+            event.preventDefault();
+
+            menuCloseBtn.focus();
+        }
+    });
 }
 
 menu();
