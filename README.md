@@ -1,4 +1,4 @@
-# [Hunger Landing Page]()
+# [Hunger Landing Page](https://k0d0d.github.io/hunger-landing-page)
 
 ![ScreenShot](/app/images/preview.png)
 
@@ -31,7 +31,7 @@
 
 ## 👀 Демо
 
-[link]()
+https://k0d0d.github.io/hunger-landing-page
 
 ### [EN]
 
@@ -62,4 +62,4 @@ This is usual HTML-coding of one-page website [template](https://www.figmacrush.
 
 ## 👀 Demo
 
-[link]()
+https://k0d0d.github.io/hunger-landing-page
