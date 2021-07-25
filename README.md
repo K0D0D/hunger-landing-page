@@ -1,6 +1,6 @@
 # [Hunger Landing Page]()
 
-[RU] / [EN](#en)
+### [RU] / [EN](#en)
 
 ## 😕 Что это?
 
@@ -31,7 +31,7 @@
 
 [link]()
 
-[EN]
+### [EN]
 
 ## 😕 What is this?
 
