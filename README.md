@@ -1,5 +1,7 @@
 # [Hunger Landing Page]()
 
+![ScreenShot](/app/images/preview.png)
+
 ### [RU] / [EN](#en)
 
 ## 😕 Что это?
