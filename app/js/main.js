@@ -104,9 +104,7 @@ let customSelect = function () {
         selectValue.innerText = this.innerText;
         selectValue.style.color = "inherit";
     }
-}
-
-customSelect();
+}();
 
 let swipeSlider = function () {
     const slides = document.querySelectorAll(".specialties__slider-item");
@@ -242,9 +240,7 @@ let swipeSlider = function () {
 
         distance = 0;
     }
-}
-
-swipeSlider();
+}();
 
 let sortByCategory = function () {
     const categoryBtns = document.querySelectorAll(".meals__categories-button");
@@ -278,9 +274,7 @@ let sortByCategory = function () {
 
         prevActive = this;
     }
-}
-
-sortByCategory();
+}();
 
 let stickyHeader = function () {
     const header = document.querySelector(".header");
@@ -350,9 +344,7 @@ let stickyHeader = function () {
             }, 400);
         }
     }
-}
-
-stickyHeader();
+}();
 
 let smoothAnchorScroll = function () {
     let anchorLinks = document.querySelectorAll("a[href^='#'");
@@ -375,9 +367,7 @@ let smoothAnchorScroll = function () {
             behavior: "smooth"
         });
     }
-}
-
-smoothAnchorScroll();
+}();
 
 let menu = function () {
     const menuOpenBtn = document.querySelector(".open-btn");
@@ -420,6 +410,4 @@ let menu = function () {
             menuCloseBtn.focus();
         }
     });
-}
-
-menu();
+}();
