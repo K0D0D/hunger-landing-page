@@ -195,31 +195,25 @@ let swipeSlider = function () {
 
     slides.forEach(item => {
         item.addEventListener("touchstart", swipeStart);
-        item.addEventListener("mousedown", (event) => {
-            swipeStart(event);
-
-            item.addEventListener("mousemove", swipeProcess);
-        });
-        item.addEventListener("touchmove", swipeProcess);
+        item.addEventListener("mousedown", swipeStart);
         item.addEventListener("touchend", swipeEnd);
         item.addEventListener("touchcansel", swipeEnd);
-        item.addEventListener("mouseup", () => {
-            swipeEnd();
-
-            item.removeEventListener("mousemove", swipeProcess);
-        });
+        item.addEventListener("mouseup", swipeEnd);
     });
 
     function swipeStart (event) {
         initialX = getPosition(event);
     }
 
-    function swipeProcess (event) {
+    function swipeEnd (event) {
         currentX = getPosition(event);
-        distance = currentX - initialX;
-    }
 
-    function swipeEnd () {
+        if (!currentX) {
+            currentX =  event.changedTouches[event.changedTouches.length - 1].clientX - rect.left;
+        }
+
+        distance = currentX - initialX;
+
         prevIndex = currentIndex;
 
         if (-distance >= minDistance) {
